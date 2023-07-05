@@ -120,8 +120,8 @@ class GlobalData:
 
         if makeDir:
             try:
-                os.mkdir(misc.toPath(misc.confPath), 0755)
-            except OSError, (errno, strerror):
+                os.mkdir(misc.toPath(misc.confPath), 0o755)
+            except (OSError, (errno, strerror)):
                 wx.MessageBox("Error creating configuration directory\n"
                               "'%s': %s" % (misc.confPath, strerror),
                               "Error", wx.OK, None)
@@ -263,7 +263,7 @@ class MyCtrl(wx.Control):
 
         try:
             (sp, msg) = screenplay.Screenplay.load(s, cfgGl)
-        except TrelbyError, e:
+        except (TrelbyError, e):
             wx.MessageBox("Error loading file:\n\n%s" % e, "Error",
                           wx.OK, mainFrame)
 
@@ -1303,7 +1303,7 @@ class MyCtrl(wx.Control):
         tests.sort()
         count = 100
 
-        print "-" * 20
+        print ("-" * 20)
 
         for name, func in tests:
             t = time.time()
@@ -1313,9 +1313,9 @@ class MyCtrl(wx.Control):
 
             t = time.time() - t
 
-            print "%.5f seconds per %s" % (t / count, name)
+            print ("%.5f seconds per %s" % (t / count, name))
 
-        print "-" * 20
+        print ("-" * 20)
 
         # it's annoying having the program ask if you want to save after
         # running these tests, so pretend the script hasn't changed
