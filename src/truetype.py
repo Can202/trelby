@@ -38,7 +38,7 @@ class Font:
 
         try:
             self.parse(s)
-        except (struct.error, ParseError), e:
+        except ((struct.error, ParseError), e):
             self.error = e
 
             return

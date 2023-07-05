@@ -230,7 +230,7 @@ class Command:
             v = self.__class__.cvars = mypickle.Vars()
 
             v.addList("keys", [], "Keys",
-                      mypickle.IntVar("", 0, "", 0, 9223372036854775808L))
+                      mypickle.IntVar("", 0, "", 0, 9223372036854775808))
 
             v.makeDicts()
 
@@ -1228,23 +1228,23 @@ class ConfigGlobal:
                 return
 
             progs = [
-                (ur"C:\Program Files\Adobe\Reader 11.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Reader 11.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Reader 10.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Reader 10.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Reader 9.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Reader 9.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Reader 8.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Reader 8.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Acrobat 7.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Acrobat 7.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Acrobat 6.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Acrobat 6.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Acrobat 5.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Acrobat 5.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Adobe\Acrobat 4.0\Reader\AcroRd32.exe",
+                (r"C:\Program Files\Adobe\Acrobat 4.0\Reader\AcroRd32.exe",
                  ""),
-                (ur"C:\Program Files\Foxit Software\Foxit Reader\Foxit Reader.exe",
+                (r"C:\Program Files\Foxit Software\Foxit Reader\Foxit Reader.exe",
                  ""),
                 ]
         else:

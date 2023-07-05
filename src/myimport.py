@@ -7,7 +7,8 @@ import util
 from lxml import etree
 import wx
 
-import StringIO
+#import StringIO
+from io import StringIO
 import re
 import zipfile
 
@@ -48,7 +49,7 @@ def importAstx(fileName, frame):
 
     try:
         root = etree.XML(data)
-    except etree.XMLSyntaxError, e:
+    except (etree.XMLSyntaxError, e):
         wx.MessageBox("Error parsing file: %s" %e, "Error", wx.OK, frame)
         return None
 
@@ -135,7 +136,7 @@ def importFadein(fileName, frame):
 
     try:
         root = etree.XML(content)
-    except etree.XMLSyntaxError, e:
+    except (etree.XMLSyntaxError, e):
         wx.MessageBox("Error parsing file: %s" %e, "Error", wx.OK, frame)
         return None
 
@@ -265,7 +266,7 @@ def importCeltx(fileName, frame):
     try:
         parser = etree.HTMLParser()
         root = etree.XML(content, parser)
-    except etree.XMLSyntaxError, e:
+    except (etree.XMLSyntaxError, e):
         wx.MessageBox("Error parsing file: %s" %e, "Error", wx.OK, frame)
         return None
 
@@ -388,7 +389,7 @@ def importFDX(fileName, frame):
 
         return lines
 
-    except etree.XMLSyntaxError, e:
+    except (etree.XMLSyntaxError, e):
         wx.MessageBox("Error parsing file: %s" %e, "Error", wx.OK, frame)
         return None
 

@@ -11,7 +11,8 @@ import re
 import tempfile
 import time
 
-import StringIO
+#import StringIO
+from io import StringIO
 
 if "TRELBY_TESTING" in os.environ:
     import mock
@@ -795,12 +796,12 @@ class Key:
     #        34:  Shift
 
     def toInt(self):
-        return (self.kc & 0xFFFFFFFFL) | (self.ctrl << 32L) | \
-               (self.alt << 33L) | (self.shift << 34L)
+        return (self.kc & 0xFFFFFFFF) | (self.ctrl << 32) | \
+               (self.alt << 33) | (self.shift << 34)
 
     @staticmethod
     def fromInt(val):
-        return Key(val & 0xFFFFFFFFL, (val >> 32) & 1, (val >> 33) & 1,
+        return Key(val & 0xFFFFFFFF, (val >> 32) & 1, (val >> 33) & 1,
                    (val >> 34) & 1)
 
     # construct from wx.KeyEvent
@@ -879,7 +880,7 @@ def loadFile(filename, frame, maxSize = -1):
         finally:
             f.close()
 
-    except IOError, (errno, strerror):
+    except (IOError, (errno, strerror)):
         wx.MessageBox("Error loading file '%s': %s" % (
                 filename, strerror), "Error", wx.OK, frame)
         ret = None
@@ -929,7 +930,7 @@ def writeToFile(filename, data, frame):
 
         return True
 
-    except IOError, (errno, strerror):
+    except (IOError, (errno, strerror)):
         wx.MessageBox("Error writing file '%s': %s" % (
                 filename, strerror), "Error", wx.OK, frame)
 
@@ -999,8 +1000,7 @@ class TimerDev:
     def __del__(self):
         self.t = time.time() - self.t
         self.__class__.nestingLevel -= 1
-        print "%s%s took %.5f seconds" % (" " * self.__class__.nestingLevel,
-                                          self.msg, self.t)
+        print ("%s%s took %.5f seconds" % (" " * self.__class__.nestingLevel, self.msg, self.t))
 
 # Get the Windows default PDF viewer path from registry and return that,
 # or None on errors.

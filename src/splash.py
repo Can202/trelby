@@ -152,6 +152,6 @@ class SplashWindow(wx.Frame):
 
             SplashWindow.quotes = quotes
 
-        except Exception, e:
+        except (Exception, e):
             wx.MessageBox("Error loading quotes: %s" % str(e),
                           "Error", wx.OK, parent)

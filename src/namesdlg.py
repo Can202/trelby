@@ -41,7 +41,7 @@ def readNames(frame):
 
         return True
 
-    except Exception, e:
+    except (Exception, e):
         wx.MessageBox("Error loading name database: %s" % str(e),
                       "Error", wx.OK, frame)
 

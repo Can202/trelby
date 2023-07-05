@@ -83,7 +83,7 @@ class PDFLineOp(PDFDrawOp):
         pc = len(p)
 
         if pc < 2:
-            print "LineOp contains only %d points" % pc
+            print ("LineOp contains only %d points" % pc)
 
             return
 
@@ -115,7 +115,7 @@ class PDFRectOp(PDFDrawOp):
         elif pmlOp.fillType == pml.STROKE_FILL:
             output += "B\n"
         else:
-            print "Invalid fill type for RectOp"
+            print ("Invalid fill type for RectOp")
 
 class PDFQuarterCircleOp(PDFDrawOp):
     def draw(self, pmlOp, pageNr, output, pe):
@@ -444,7 +444,7 @@ class PDFExporter:
         fi = self.fonts.get(flags & 15)
 
         if not fi:
-            print "PDF.getfontNr: invalid flags %d" % flags
+            print ("PDF.getfontNr: invalid flags %d" % flags)
 
             return 0
 
